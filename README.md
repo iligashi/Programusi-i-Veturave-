@@ -31,7 +31,7 @@ A modern, responsive website for a car programming and customization service. Bu
 
 1. Clone the repository:
 ```bash
-git clone [repository-url]
+git clone [https://github.com/iligashi/Programusi-i-Veturave-]
 cd car-programming
 ```
 
@@ -75,3 +75,6 @@ For professional car programming services:
 ## License
 
 This project is proprietary software. All rights reserved.
+
+## Deploy 
+https://programuesiiveturave.netlify.app/
