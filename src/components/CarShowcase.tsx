@@ -7,14 +7,14 @@ const CarShowcase = () => {
   const carBrands = [
     {
       name: 'BMW',
-      image: 'https://media.ed.edmunds-media.com/bmw/7-series/2023/oem/2023_bmw_7-series_sedan_i7-xdrive60_fq_oem_1_1600.jpg',
+      image: 'https://cdn.jdpower.com/JDP_2024%20BMW%20i5%20eDrive40%20Silver%20Front%20Quarter%20View%20Action.jpeg',
       features: language === 'en' 
         ? ['M/Alpina Display', 'Ambient Lighting', 'Gesture Control']
         : ['Ekrani M/Alpina', 'Ndriçimi Ambiental', 'Kontrolli me Gjeste']
     },
     {
       name: 'AUDI',
-      image: 'https://media.ed.edmunds-media.com/audi/rs-e-tron-gt/2024/oem/2024_audi_rs-e-tron-gt_sedan_base_fq_oem_1_1600.jpg',
+      image: 'https://media.whatcar.com/wc-image/2022-03/a221151_large.jpg',
       features: language === 'en'
         ? ['RS Lights', 'Virtual Cockpit Plus', 'Matrix LED']
         : ['Dritat RS', 'Virtual Cockpit Plus', 'Matrix LED']
@@ -28,21 +28,21 @@ const CarShowcase = () => {
     },
     {
       name: 'VW',
-      image: 'https://media.ed.edmunds-media.com/volkswagen/id7/2024/oem/2024_volkswagen_id7_sedan_pro-s_fq_oem_1_1600.jpg',
+      image: 'https://www.carpixel.net/pics/full/26507/2024-volkswagen-golf-gti-122478.jpg',
       features: language === 'en'
         ? ['Digital Cockpit Pro', 'IQ.DRIVE', 'Area View']
         : ['Digital Cockpit Pro', 'IQ.DRIVE', 'Pamja e Zonës']
     },
     {
       name: 'SKODA',
-      image: 'https://cdn.skoda-storyboard.com/2023/04/230426-SKODA-ENYAQ-Coupe-vRS_01-2880x1800.jpg',
+      image: 'https://www.ixbt.com/img/n1/news/2024/1/3/skoda-octavia-2024%20%281%29_large.png',
       features: language === 'en'
         ? ['Virtual Cockpit', 'LED Matrix', 'Park Assist']
         : ['Virtual Cockpit', 'LED Matrix', 'Asistenca e Parkimit']
     },
     {
       name: 'SEAT',
-      image: 'https://media.seat.com/image/upload/v1676538722/seat-website/carworlds/leon/leon-5d/overview/design/seat-leon-5d-exterior-design-front-view.jpg',
+      image: 'https://www.gtopcars.com/wp-content/uploads/2023/05/2024-Seat-Leon.jpg',
       features: language === 'en'
         ? ['Digital Cockpit', 'Full Link', 'Dynamic Control']
         : ['Digital Cockpit', 'Full Link', 'Kontrolli Dinamik']
