@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import seat from './seat.png';
+import VW from './VW.png';
 
 const CarShowcase = () => {
   const { language } = useLanguage();
@@ -28,7 +30,7 @@ const CarShowcase = () => {
     },
     {
       name: 'VW',
-      image: 'https://www.carpixel.net/pics/full/26507/2024-volkswagen-golf-gti-122478.jpg',
+      image: VW,
       features: language === 'en'
         ? ['Digital Cockpit Pro', 'IQ.DRIVE', 'Area View']
         : ['Digital Cockpit Pro', 'IQ.DRIVE', 'Pamja e Zonës']
@@ -42,7 +44,7 @@ const CarShowcase = () => {
     },
     {
       name: 'SEAT',
-      image: 'https://www.gtopcars.com/wp-content/uploads/2023/05/2024-Seat-Leon.jpg',
+      image: seat,
       features: language === 'en'
         ? ['Digital Cockpit', 'Full Link', 'Dynamic Control']
         : ['Digital Cockpit', 'Full Link', 'Kontrolli Dinamik']
