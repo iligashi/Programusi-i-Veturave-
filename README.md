@@ -31,8 +31,8 @@ A modern, responsive website for a car programming and customization service. Bu
 
 1. Clone the repository:
 ```bash
-git clone [https://github.com/iligashi/Programusi-i-Veturave-]
-cd car-programming
+git clone https://github.com/iligashi/Programusi-i-Veturave-.git
+cd Programusi-i-Veturave-
 ```
 
 2. Install dependencies:
