@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7dd3fc"/>
+      <stop offset="0.5" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0.8" cy="0.2" r="0.6">
+      <stop offset="0" stop-color="#38bdf8" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.1" cy="1" r="0.6">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
+    </pattern>
+    <linearGradient id="paint" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#1e3a8a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#05070a"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glowA)"/>
+  <rect width="1200" height="630" fill="url(#glowB)"/>
+
+  <!-- logo mark -->
+  <g transform="translate(80 80)">
+    <rect width="72" height="72" rx="18" fill="#0a0d12" stroke="#ffffff" stroke-opacity="0.1"/>
+    <path d="M19.3 52.7 A23.6 23.6 0 1 1 52.7 52.7" fill="none" stroke="url(#accent)" stroke-width="5.5" stroke-linecap="round"/>
+    <path d="M36 36 L50 23.6" stroke="#fff" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="36" cy="36" r="5" fill="#fff"/>
+  </g>
+  <text x="172" y="128" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#ffffff">Programuesi i Veturave</text>
+
+  <text x="80" y="270" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="800" fill="#ffffff" letter-spacing="-1.5">Zhblloko atë që vetura jote</text>
+  <text x="80" y="350" font-family="Segoe UI, Arial, sans-serif" font-size="62" font-weight="800" fill="url(#accent)" letter-spacing="-1.5">tashmë e ka.</text>
+  <text x="80" y="410" font-family="Segoe UI, Arial, sans-serif" font-size="28" fill="#94a3b8">Programim dhe aktivizim i veçorive të fabrikës</text>
+
+  <g font-family="Consolas, monospace" font-size="20" fill="#7dd3fc" letter-spacing="3">
+    <rect x="80" y="470" width="420" height="48" rx="24" fill="#38bdf8" fill-opacity="0.08" stroke="#38bdf8" stroke-opacity="0.3"/>
+    <text x="110" y="501">PRISHTINË · TIRANË · DURRËS</text>
+  </g>
+
+  <!-- car -->
+  <g transform="translate(640 330) scale(0.95)">
+    <ellipse cx="300" cy="200" rx="270" ry="14" fill="#000" opacity="0.6"/>
+    <path d="M40,170 C40,150 55,140 80,136 L190,122 C215,100 250,78 300,74 L380,74 C420,76 450,96 480,120 L540,130 C562,134 572,148 572,165 L572,178 C572,186 566,190 558,190 L505,190 A50,50 0 0 0 405,190 L200,190 A50,50 0 0 0 100,190 L52,190 C44,190 40,184 40,176 Z" fill="url(#paint)"/>
+    <path d="M205,124 C230,104 258,88 300,86 L372,86 C405,88 430,104 452,122 Z" fill="#0b1220" opacity="0.9"/><path d="M330,86 L330,124" stroke="url(#paint)" stroke-width="6"/><path d="M60,150 L560,138" stroke="#bfdbfe" stroke-opacity="0.35" stroke-width="2"/><path d="M42,160 L58,158 L60,170 L44,172 Z" fill="#ef4444"/>
+    <path d="M548,140 L568,146 L566,154 L540,150 Z" fill="#e0f2fe"/>
+    <circle cx="150" cy="190" r="42" fill="#0a0d12"/><circle cx="150" cy="190" r="27" fill="#475569"/><circle cx="150" cy="190" r="20" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6 6"/><circle cx="150" cy="190" r="6" fill="#cbd5e1"/>
+    <circle cx="455" cy="190" r="42" fill="#0a0d12"/><circle cx="455" cy="190" r="27" fill="#475569"/><circle cx="455" cy="190" r="20" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6 6"/><circle cx="455" cy="190" r="6" fill="#cbd5e1"/>
+    <path d="M572,150 L760,120 L760,180 Z" fill="#7dd3fc" opacity="0.08"/>
+  </g>
+</svg>
