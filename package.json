@@ -1,6 +1,6 @@
 {
   "name": "programuesi-i-veturave",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Website for Programuesi i Veturave — professional car coding and feature activation in Prishtinë, Tiranë and Durrës.",
@@ -16,7 +16,11 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "assets": "node scripts/generate-assets.mjs"
+    "assets": "node scripts/generate-assets.mjs",
+    "prepare": "husky",
+    "format:check": "prettier --check .",
+    "test:coverage": "vitest run --coverage",
+    "check": "npm run format:check && npm run lint && npm run typecheck && npm test"
   },
   "dependencies": {
     "framer-motion": "^11.11.0",
@@ -36,13 +40,16 @@
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^2.1.9",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.15.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.12.0",
+    "husky": "^9.1.7",
     "jsdom": "^25.0.1",
+    "lint-staged": "^15.5.2",
     "postcss": "^8.4.49",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.9",
@@ -51,5 +58,33 @@
     "typescript-eslint": "^8.15.0",
     "vite": "^5.4.11",
     "vitest": "^2.1.5"
+  },
+  "homepage": "https://programuesiiveturave.netlify.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iligashi/Programusi-i-Veturave-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iligashi/Programusi-i-Veturave-/issues"
+  },
+  "author": "Ilaz Gashi (https://github.com/iligashi)",
+  "license": "UNLICENSED",
+  "keywords": [
+    "car-coding",
+    "react",
+    "vite",
+    "typescript",
+    "tailwindcss",
+    "framer-motion",
+    "i18n"
+  ],
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css,html,yml,yaml}": [
+      "prettier --write"
+    ]
   }
 }
