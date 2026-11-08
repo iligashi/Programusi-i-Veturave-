@@ -1,80 +1,97 @@
-# Car Programming Website
+# Programuesi i Veturave
 
-A modern, responsive website for a car programming and customization service. Built with React, TypeScript, and Tailwind CSS.
+Website for **Programuesi i Veturave**, a car coding and factory-feature activation service in
+Prishtinë, Tiranë and Durrës.
+
+**Live:** https://programuesiiveturave.netlify.app
+
+![Social preview](public/og-image.png)
 
 ## Features
 
-- Modern, responsive design
-- Interactive UI components with animations
-- Comprehensive service listings
-- Contact information and location details
-- Mobile-friendly navigation
-- Social media integration
+- Fully bilingual — **Albanian (default)** and English, typed so no string can be left untranslated.
+  The choice is remembered and `<html lang>` follows it.
+- Animated hero with a live "needle sweep" speedometer and coding log, scroll-linked parallax,
+  reveal-on-scroll sections, a brand explorer with custom SVG car illustrations, and a spotlight
+  hover effect on cards. Every animation respects the OS "reduce motion" setting.
+- Services page with category and brand filters stored in the URL (shareable links such as
+  `/services?brand=bmw`).
+- One-tap contact everywhere: `tel:`, WhatsApp and Viber links, a floating WhatsApp button, and a
+  request form that opens WhatsApp with a ready-made message (no backend needed).
+- Live "open now / closed" status based on the business timezone.
+- SEO: per-page titles and descriptions, canonical URLs, Open Graph image for Facebook/WhatsApp
+  previews, `AutoRepair` structured data, sitemap and robots.txt.
+- Accessible: skip link, labelled icon buttons, keyboard-friendly menu (Escape closes it), visible
+  focus rings, semantic headings.
 
-## Services
+## Tech stack
 
-- DVD/Video activation while driving
-- CarPlay Wi-Fi activation
-- M or Alpina display activation (BMW)
-- RS lights activation (AUDI)
-- Autopilot and lane keeping
-- And many more customization options
+React 18 · TypeScript · Vite · Tailwind CSS · Framer Motion · React Router 6 ·
+react-helmet-async · Vitest + Testing Library · ESLint + Prettier
 
-## Getting Started
+## Getting started
 
-### Prerequisites
+Requires Node.js 20+.
 
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/iligashi/Programusi-i-Veturave-.git
-cd Programusi-i-Veturave-
-```
-
-2. Install dependencies:
 ```bash
 npm install
+npm run dev
 ```
 
-3. Start the development server:
-```bash
-npm start
+The site runs at http://localhost:5173.
+
+## Scripts
+
+| Command             | What it does                                            |
+| ------------------- | ------------------------------------------------------- |
+| `npm run dev`       | Start the dev server                                    |
+| `npm run build`     | Type-check and build for production into `build/`       |
+| `npm run preview`   | Serve the production build locally                      |
+| `npm test`          | Run the test suite once                                 |
+| `npm run lint`      | Lint with ESLint (including accessibility rules)        |
+| `npm run typecheck` | Type-check without building                             |
+| `npm run format`    | Format all files with Prettier                          |
+| `npm run assets`    | Re-render the PNG icons and social image from their SVG |
+
+## Project structure
+
+```
+src/
+  config/       business details (phone, links, hours) and navigation — edit these first
+  data/         structural catalog: brands, service ids, categories
+  i18n/         en.ts and sq.ts dictionaries, provider and useI18n() hook
+  components/
+    layout/     Navbar, Footer, Layout (scroll progress, floating WhatsApp)
+    home/       homepage sections
+    graphics/   SVG car illustration and animated cockpit
+    ui/         shared building blocks (reveal animations, cards, SEO, icons)
+  pages/        one file per route
+  lib/          small helpers (opening hours)
+  test/         tests and test setup
+scripts/        asset generation (icons, Open Graph image)
 ```
 
-The application will be available at `http://localhost:3000`
+### Common edits
 
-### Building for Production
+- **Phone number, social links or opening hours:** `src/config/site.ts`
+- **Any text on the site:** `src/i18n/sq.ts` and `src/i18n/en.ts`
+- **Add a service:** add its id to `serviceIds` and an entry to `services` in
+  `src/data/catalog.ts`, then add its title and description to both language files (TypeScript
+  will point out anything missing).
 
-To create a production build:
+## Deployment
 
-```bash
-npm run build
-```
-
-## Technologies Used
-
-- React
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- React Router
-- React Icons
-- Hero Icons
+Deployed on Netlify. `netlify.toml` sets the build command, the output folder, the SPA fallback
+(so deep links like `/services` work on refresh) and caching/security headers.
 
 ## Contact
 
-For professional car programming services:
-- Phone/WhatsApp/Viber: (+383) 49-599-931
-- Locations: Prishtinë - Tiranë - Durrës
+- Phone / WhatsApp / Viber: +383 49 599 931
+- Instagram: [@programues_i_veturave](https://www.instagram.com/programues_i_veturave/)
 - Facebook: [Programues i veturave](https://www.facebook.com/Programuesiveturave)
 
 ## License
 
-This project is proprietary software. All rights reserved.
+Proprietary software. All rights reserved.
 
-## Deploy 
-https://programuesiiveturave.netlify.app/
+Made by Ilaz Gashi · Nexora Agency.
