@@ -1,0 +1,28 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    labels: [dependencies]
+    groups:
+      react:
+        patterns: ['react', 'react-dom', '@types/react*']
+      lint-and-format:
+        patterns: ['eslint*', '@eslint/*', 'typescript-eslint', 'prettier*', 'globals']
+      testing:
+        patterns: ['vitest', 'jsdom', '@testing-library/*']
+      build:
+        patterns: ['vite', '@vitejs/*', 'tailwindcss', 'postcss', 'autoprefixer', 'typescript']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: ci
+    labels: [dependencies]

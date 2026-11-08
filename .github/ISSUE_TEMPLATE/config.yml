@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Customer enquiry (WhatsApp)
+    url: https://wa.me/38349599931
+    about: Questions about your car or our services? Message us on WhatsApp.
+  - name: Security vulnerability
+    url: https://github.com/iligashi/Programusi-i-Veturave-/security/advisories/new
+    about: Please report security issues privately.
