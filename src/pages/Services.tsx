@@ -1,104 +1,208 @@
-import { motion } from 'framer-motion';
-import { FaCheck } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
+import type { ReactNode } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { CtaBand } from '../components/ui/CtaBand';
+import { categoryIcon, Icon, serviceIcon } from '../components/ui/icons';
+import { PageHeader, Reveal } from '../components/ui/primitives';
+import { Seo } from '../components/ui/Seo';
+import { links } from '../config/site';
+import {
+  brandIds,
+  brands,
+  categoryIds,
+  services,
+  type BrandId,
+  type CategoryId,
+} from '../data/catalog';
+import { format, useI18n } from '../i18n/useI18n';
 
-const Services = () => {
-  const services = [
-    {
-      category: 'Entertainment & Display',
-      items: [
-        'DVD/Video activation while driving',
-        'CarPlay Wi-Fi activation',
-        'M or Alpina display activation (BMW)',
-        'RS lights activation (AUDI)',
-        'S or RS display mode (AUDI)',
-        'M logo activation on display',
-      ],
-    },
-    {
-      category: 'Driving & Safety',
-      items: [
-        'Autopilot and lane keeping',
-        'Parking sensors on display',
-        'Fog lights activation with steering',
-        'Start/Stop memory (deactivation)',
-        'Mirror folding when locking',
-        'Mirror tilt in reverse',
-      ],
-    },
-    {
-      category: 'Customization',
-      items: [
-        'Ambient Colors activation',
-        'Needle sweep activation',
-        'LED daytime running lights',
-        'R view with 320km/h graphics',
-        'Trunk remote control',
-      ],
-    },
-  ];
+function parse<T extends string>(value: string | null, allowed: readonly T[]): T | null {
+  return value && (allowed as readonly string[]).includes(value) ? (value as T) : null;
+}
+
+function FilterChip({
+  active,
+  onClick,
+  children,
+  group,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: ReactNode;
+  group: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+        active ? 'text-ink-950' : 'text-slate-400 hover:text-white'
+      }`}
+    >
+      {active && (
+        <motion.span
+          layoutId={`chip-${group}`}
+          className="absolute inset-0 -z-10 rounded-full bg-white"
+          transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+        />
+      )}
+      {children}
+    </button>
+  );
+}
+
+export default function Services() {
+  const { t } = useI18n();
+  const [params, setParams] = useSearchParams();
+  // Filters live in the URL so a filtered view can be shared or bookmarked.
+  const category = parse<CategoryId>(params.get('category'), categoryIds);
+  const brand = parse<BrandId>(params.get('brand'), brandIds);
+
+  const setFilter = (key: 'category' | 'brand', value: string | null) => {
+    const next = new URLSearchParams(params);
+    if (value) next.set(key, value);
+    else next.delete(key);
+    setParams(next, { replace: true, preventScrollReset: true });
+  };
+
+  const visible = services.filter(
+    (s) => (!category || s.category === category) && (!brand || s.brands.includes(brand)),
+  );
 
   return (
-    <div className="bg-gray-50 min-h-screen">
-      {/* Header */}
-      <section className="bg-blue-600 text-white py-16">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-            <p className="text-xl max-w-2xl mx-auto">
-              Professional programming services for premium vehicles including BMW, AUDI, LAMBORGHINI, VW, SKODA, and SEAT
-            </p>
-          </motion.div>
-        </div>
-      </section>
+    <>
+      <Seo title={t.services.seoTitle} description={t.services.seoDescription} />
+      <PageHeader
+        eyebrow={t.services.eyebrow}
+        title={t.services.title}
+        subtitle={t.services.subtitle}
+      />
 
-      {/* Services List */}
-      <section className="section-padding">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((category, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
+      <section className="pb-20">
+        <div className="container-page">
+          <Reveal className="card sticky top-20 z-30 mb-10 flex flex-col gap-3 bg-ink-900/85 p-3 backdrop-blur-xl md:flex-row md:items-center md:justify-between">
+            <div
+              role="group"
+              aria-label={t.services.filterCategory}
+              className="flex flex-wrap gap-1"
+            >
+              <FilterChip
+                group="cat"
+                active={!category}
+                onClick={() => setFilter('category', null)}
               >
-                <div className="bg-blue-600 text-white py-4 px-6">
-                  <h3 className="text-xl font-semibold">{category.category}</h3>
-                </div>
-                <ul className="p-6 space-y-4">
-                  {category.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start space-x-3">
-                      <FaCheck className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                      <span className="text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
+                {t.services.all}
+              </FilterChip>
+              {categoryIds.map((id) => {
+                const CatIcon = categoryIcon[id];
+                return (
+                  <FilterChip
+                    key={id}
+                    group="cat"
+                    active={category === id}
+                    onClick={() => setFilter('category', id)}
+                  >
+                    <CatIcon className="h-4 w-4" />
+                    {t.services.categories[id].short}
+                  </FilterChip>
+                );
+              })}
+            </div>
+            <label className="flex items-center gap-3 text-sm text-slate-400">
+              <span className="sr-only">{t.services.filterBrand}</span>
+              <select
+                value={brand ?? ''}
+                onChange={(e) => setFilter('brand', e.target.value || null)}
+                className="w-full rounded-full border border-white/10 bg-ink-800 px-4 py-2 text-sm text-white md:w-auto"
+              >
+                <option value="">{t.services.allBrands}</option>
+                {brands.map((b) => (
+                  <option key={b.id} value={b.id}>
+                    {b.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </Reveal>
+
+          <p
+            className="mb-6 font-mono text-xs uppercase tracking-[0.2em] text-slate-500"
+            aria-live="polite"
+          >
+            {format(t.services.count, { n: visible.length })}
+          </p>
+
+          <motion.ul layout className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            <AnimatePresence mode="popLayout">
+              {visible.map((service) => {
+                const copy = t.services.items[service.id];
+                const ServiceIcon = serviceIcon[service.id];
+                return (
+                  <motion.li
+                    key={service.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.94 }}
+                    transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                    className="card group flex flex-col p-6 transition-colors hover:border-white/15"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-volt-400/20 to-signal-500/20 text-volt-300 transition-transform group-hover:scale-110">
+                        <ServiceIcon className="h-5 w-5" />
+                      </span>
+                      <span className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-slate-500">
+                        {t.services.categories[service.category].short}
+                      </span>
+                    </div>
+                    <h2 className="mt-5 text-lg font-semibold">{copy.title}</h2>
+                    <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-400">
+                      {copy.body}
+                    </p>
+                    <ul className="mt-5 flex flex-wrap gap-1.5">
+                      {service.brands.map((id) => (
+                        <li
+                          key={id}
+                          className={`rounded-md px-2 py-0.5 text-[11px] font-medium ${
+                            id === brand
+                              ? 'bg-volt-400/20 text-volt-300'
+                              : 'bg-white/5 text-slate-400'
+                          }`}
+                        >
+                          {brands.find((b) => b.id === id)?.name}
+                        </li>
+                      ))}
+                    </ul>
+                    <a
+                      href={links.whatsapp(
+                        format(t.common.whatsappInterested, { service: copy.title }),
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-flex items-center justify-center gap-2 rounded-full border border-whatsapp/30 bg-whatsapp/10 px-4 py-2.5 text-sm font-medium text-whatsapp transition hover:bg-whatsapp hover:text-ink-950"
+                    >
+                      <Icon.whatsapp className="h-4 w-4" />
+                      {t.services.ask}
+                    </a>
+                  </motion.li>
+                );
+              })}
+            </AnimatePresence>
+          </motion.ul>
+
+          {visible.length === 0 && (
+            <p className="card p-10 text-center text-slate-400">{t.services.empty}</p>
+          )}
+
+          <p className="mt-10 flex items-start gap-3 text-sm text-slate-500">
+            <Icon.shield className="mt-0.5 h-4 w-4 shrink-0 text-volt-400" />
+            {t.services.note}
+          </p>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="bg-gray-100 py-16">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-bold mb-4">Need Our Services?</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Contact us via WhatsApp or Viber at (+383) 49-599-931
-          </p>
-          <p className="text-gray-600">
-            Locations: Prishtinë - Tiranë - Durrës
-          </p>
-        </div>
-      </section>
-    </div>
+      <CtaBand />
+    </>
   );
-};
-
-export default Services; 
+}
