@@ -8,7 +8,12 @@ import { useI18n } from '../../i18n/useI18n';
 import { Icon } from '../ui/icons';
 import { Logo } from '../ui/Logo';
 
-function LanguageSwitch({ className = '' }: { className?: string }) {
+/**
+ * `slide` animates the pill between languages with a shared layout animation. It must stay
+ * off inside the mobile menu: a layout animation inside an exiting `AnimatePresence` tree
+ * keeps the menu mounted (invisible, but covering the page and swallowing every tap).
+ */
+function LanguageSwitch({ className = '', slide = true }: { className?: string; slide?: boolean }) {
   const { language, setLanguage, t } = useI18n();
   return (
     <div
@@ -31,9 +36,13 @@ function LanguageSwitch({ className = '' }: { className?: string }) {
           >
             {active && (
               <motion.span
-                layoutId="lang-pill"
                 className="absolute inset-0 -z-10 rounded-full bg-white"
-                transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                {...(slide
+                  ? {
+                      layoutId: 'lang-pill',
+                      transition: { type: 'spring', stiffness: 500, damping: 35 },
+                    }
+                  : { initial: { scale: 0.6, opacity: 0 }, animate: { scale: 1, opacity: 1 } })}
               />
             )}
             {lang}
@@ -202,7 +211,7 @@ export function Navbar() {
                 {t.common.whatsappUs}
               </a>
               <div className="flex items-center justify-between">
-                <LanguageSwitch />
+                <LanguageSwitch slide={false} />
                 <div className="flex gap-2">
                   <a
                     href={site.social.instagram}
