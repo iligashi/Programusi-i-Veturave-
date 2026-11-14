@@ -62,10 +62,10 @@
   "homepage": "https://programuesiiveturave.netlify.app",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iligashi/Programusi-i-Veturave-.git"
+    "url": "git+https://github.com/iligashi/programuesi-i-veturave.git"
   },
   "bugs": {
-    "url": "https://github.com/iligashi/Programusi-i-Veturave-/issues"
+    "url": "https://github.com/iligashi/programuesi-i-veturave/issues"
   },
   "author": "Ilaz Gashi (https://github.com/iligashi)",
   "license": "UNLICENSED",

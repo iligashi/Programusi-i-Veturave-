@@ -5,7 +5,7 @@
 Please **do not** open a public issue for security problems.
 
 Report them privately through
-[GitHub security advisories](https://github.com/iligashi/Programusi-i-Veturave-/security/advisories/new),
+[GitHub security advisories](https://github.com/iligashi/programuesi-i-veturave/security/advisories/new),
 or contact the maintainer via [github.com/iligashi](https://github.com/iligashi).
 
 Include a description, steps to reproduce and the potential impact. You can expect a first reply

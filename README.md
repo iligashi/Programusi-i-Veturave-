@@ -9,11 +9,11 @@
 The official website: a fast, bilingual, animated single-page app built with React, TypeScript and Vite.
 
 [**Live site**](https://programuesiiveturave.netlify.app) ·
-[Report a bug](https://github.com/iligashi/Programusi-i-Veturave-/issues/new?template=bug_report.yml) ·
-[Request a feature](https://github.com/iligashi/Programusi-i-Veturave-/issues/new?template=feature_request.yml)
+[Report a bug](https://github.com/iligashi/programuesi-i-veturave/issues/new?template=bug_report.yml) ·
+[Request a feature](https://github.com/iligashi/programuesi-i-veturave/issues/new?template=feature_request.yml)
 
-[![CI](https://github.com/iligashi/Programusi-i-Veturave-/actions/workflows/ci.yml/badge.svg)](https://github.com/iligashi/Programusi-i-Veturave-/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/iligashi/Programusi-i-Veturave-?color=38bdf8)](https://github.com/iligashi/Programusi-i-Veturave-/releases)
+[![CI](https://github.com/iligashi/programuesi-i-veturave/actions/workflows/ci.yml/badge.svg)](https://github.com/iligashi/programuesi-i-veturave/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/iligashi/programuesi-i-veturave?color=38bdf8)](https://github.com/iligashi/programuesi-i-veturave/releases)
 ![Node](https://img.shields.io/badge/node-%E2%89%A520-339933?logo=node.js&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
@@ -93,8 +93,8 @@ The official website: a fast, bilingual, animated single-page app built with Rea
 **Requirements:** Node.js 20+ (see [`.nvmrc`](.nvmrc)).
 
 ```bash
-git clone https://github.com/iligashi/Programusi-i-Veturave-.git
-cd Programusi-i-Veturave-
+git clone https://github.com/iligashi/programuesi-i-veturave.git
+cd programuesi-i-veturave
 npm install
 npm run dev
 ```

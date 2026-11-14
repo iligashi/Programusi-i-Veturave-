@@ -50,7 +50,7 @@ Complete rebuild of the website.
 
 - First version of the website, built with Create React App.
 
-[Unreleased]: https://github.com/iligashi/Programusi-i-Veturave-/compare/v1.0.1...HEAD
-[1.0.1]: https://github.com/iligashi/Programusi-i-Veturave-/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/iligashi/Programusi-i-Veturave-/compare/v0.1.0...v1.0.0
-[0.1.0]: https://github.com/iligashi/Programusi-i-Veturave-/releases/tag/v0.1.0
+[Unreleased]: https://github.com/iligashi/programuesi-i-veturave/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/iligashi/programuesi-i-veturave/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/iligashi/programuesi-i-veturave/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/iligashi/programuesi-i-veturave/releases/tag/v0.1.0
